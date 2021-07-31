@@ -40,6 +40,26 @@ class Products extends CI_Controller {
 	}
 
 
+	function update($id = null) {
+		if (is_null($id)) {
+			$data = [
+				'name'			=> $this->input->post('name'),
+				'description'	=> $this->input->post('description'),
+				'price'			=> $this->input->post('price')
+			];
+
+			$id = $this->input->post('id');
+			$update = $this->product->updateProduct($data, $id);
+
+			if ($update > 0)
+				redirect(site_url());
+		}
+
+		$data['product'] = $this->product->getProductById($id);
+		$this->load->view('product_update_form', $data);
+	}
+
+
 	function remove($id = null) {
 		if ( ! is_null($id)) {
 			$remove = $this->product->removeProductById($id);
