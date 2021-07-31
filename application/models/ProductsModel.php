@@ -10,4 +10,14 @@ class ProductsModel extends CI_Model {
 		// kembalikan hasilnya berupa objek
 		return $query->result_object();
 	}
+
+
+	function removeProductById($id) {
+		// hapus data dari tabel product dimana id-nya = $id
+		$this->db->where(['id' => $id]);
+		$this->db->delete('products');
+
+		// kembalikan hasilnya berupa baris data yang berhasil dihapus
+		return $this->db->affected_rows();
+	}
 }

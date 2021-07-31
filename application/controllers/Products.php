@@ -18,4 +18,14 @@ class Products extends CI_Controller {
 		// kirim ke view
 		$this->load->view('product_lists', $data);
 	}
+
+
+	function remove($id = null) {
+		if ( ! is_null($id)) {
+			$remove = $this->product->removeProductById($id);
+
+			if ($remove > 0) 
+				redirect(site_url());
+		}
+	}
 }
