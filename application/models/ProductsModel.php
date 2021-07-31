@@ -11,6 +11,12 @@ class ProductsModel extends CI_Model {
 		return $query->result_object();
 	}
 
+	function addProduct($data) {
+		$this->db->insert('products', $data);
+
+		return $this->db->affected_rows();
+	}
+
 
 	function removeProductById($id) {
 		// hapus data dari tabel product dimana id-nya = $id

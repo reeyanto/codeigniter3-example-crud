@@ -20,6 +20,26 @@ class Products extends CI_Controller {
 	}
 
 
+	function add() {
+		// 1 method ini punya 2 fungsi, 1 untuk menampilkan form, 1 lagi untuk proses tambah data
+		if ($this->input->post('submit')) {
+			$data = [
+				'name'			=> $this->input->post('name'),
+				'description' 	=> $this->input->post('description'),
+				'price'			=> $this->input->post('price')
+
+			];
+
+			$add = $this->product->addProduct($data);
+
+			if ($add > 0)
+				redirect(site_url());
+		}
+
+		$this->load->view('product_add_form');
+	}
+
+
 	function remove($id = null) {
 		if ( ! is_null($id)) {
 			$remove = $this->product->removeProductById($id);
