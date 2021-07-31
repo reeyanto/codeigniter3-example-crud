@@ -25,7 +25,7 @@
 						<td align="right"><?php echo number_format($product->price, 0, '.', ',') ?></td>
 						<td align="center">
 							<a href="<?php echo site_url('products/update/' . $product->id) ?>">Update</a> | 
-							<a href="<?php echo site_url('products/remove/' . $product->id) ?>">Remove</a>
+							<a href="<?php echo site_url('products/remove/' . $product->id) ?>" onclick="return confirm('Yakin ingin menghapus data ini?')">Remove</a>
 						</td>
 					</tr>
 				<?php endforeach; ?>
